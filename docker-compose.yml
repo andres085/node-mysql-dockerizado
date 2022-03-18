@@ -3,6 +3,7 @@ version: '3.8'
 services:
   mysqldb:
     image: mysql
+    container_name: mysql-db
     restart: unless-stopped
     environment:
       - MYSQL_USER=${MYSQL_USER}
@@ -12,16 +13,16 @@ services:
     ports:
       - ${MYSQL_LOCAL_PORT}:${MYSQL_DOCKER_PORT}
     volumes:
-      - ./db:/var/lib/mysql
+      - ./mysql-data:/var/lib/mysql
 
   mysqldb-test:
     image: mysql
     container_name: mysql-dbtest
     restart: unless-stopped
     environment:
-      - MYSQL_TEST_USER=${MYSQL_TEST_USER}
-      - MYSQL_TEST_PASSWORD=${MYSQL_TEST_PASSWORD}
+      - MYSQL_USER=${MYSQL_TEST_USER}
+      - MYSQL_PASSWORD=${MYSQL_TEST_PASSWORD}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_TEST_DATABASE=${MYSQL_TEST_DATABASE}
+      - MYSQL_DATABASE=${MYSQL_TEST_DATABASE}
     ports:
       - ${MYSQL_TEST_DOCKER_PORT}:${MYSQL_TEST_LOCAL_PORT}
