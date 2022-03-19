@@ -31,6 +31,10 @@ docker-compose build
 # up daemon
 docker-compose up -d
 ```
+
+### Utilizar con NodeJS
+Clonar dentro de la carpeta el proyecto de NodeJs, configurar el .env dentro de la carpeta del proyecto con los mismos datos del .env para Docker.
+
 ## Variables de entorno
 Las variables de entorno de .env se explican a continuación:
 
